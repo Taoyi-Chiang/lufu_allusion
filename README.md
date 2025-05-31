@@ -1,46 +1,4 @@
 # First step workflow
-```mermaid
-graph TD
-    %% ======================
-    %% 1. 定義各個子圖與節點
-    %% ======================
-
-    subgraph FileInputs [來源檔案]
-        A1[(origin_text.txt)]
-        A2[(compared_text.txt)]
-    end
-
-    subgraph Preprocessing [前處理階段]
-        P1[txt_to_json &\nseg_ckip\n(生成 JSON 資料)]
-    end
-
-    subgraph AllusionMatching [典故比對階段]
-        M1[jaccard &\nngram\n(產生比對結果)]
-    end
-
-    subgraph Integration [典故整合階段]
-        I1[merge_allusion +\n人工校正／補充]
-    end
-
-    subgraph OutputDB [資料庫匯出]
-        D1[(all_allusion_database.csv)]
-    end
-
-    subgraph Visualization [視覺化]
-        V1[visualization.py\n(生成網路)]
-    end
-
-    %% ======================
-    %% 2. 定義各節點之間的流程連線
-    %% ======================
-
-    A1 --> P1
-    A2 --> M1
-    P1 --> M1
-    M1 --> I1
-    I1 --> D1
-    D1 --> V1
-```
 
 ```mermaid
 graph LR
@@ -55,6 +13,7 @@ graph LR
     E1[(basic_allusion_database.csv)]
     E2[(all_allusion_database.csv)]
     F1[network]
+
     G1{txt_to_json.py}
     G2{seg_ckip.py}
     H1{jaccard.py}
@@ -66,26 +25,7 @@ graph LR
     K1{visualization.py}
 
     %% 2. 定義接點方向
-    A1-->G1
-    G1-->B1
-    B1-->G2
-    G2-->B2
-    A2-->H1
-    H1-->C1
-    B1-->C1
-    A2-->H2
-    H2-->C2
-    B2-->J1
-    J1-->C2
-    C1-->I1
-    C2-->I1
-    I1-->D1
-    D1-->J2
-    J2-->E1
-    E1-->J3
-    J3-->E2
-    E2-->K1
-    K1-->F1
+    A1-->|txt_to_json.py|B1
 ```
 
 # 專案目錄與說明
