@@ -1,3 +1,32 @@
+# First step workflow
+
+```mermaid
+graph TD
+    %% 節點定義
+    A1[原文.txt & 比對文本.txt] 
+    A2[使用 txt_to_json.py / Jaccard] 
+    B1[產生 原文.json]
+    C1[句級典故原文.json<br/>(n-gram 比對)]
+    D1[原文分詞後<br/>(ckip.py)]
+    D2[詞級典故原文.json]
+    E1[直接引用 → 匯出 CSV]
+    E2[人工檢索空間引用]
+    F1[完整引用記錄 → 匯出CSV]
+    G1[知識網路 (Knowledge Network)]
+    
+    %% 箭頭流程
+    A1 --> A2
+    A2 --> B1
+    B1 --> C1
+    B1 --> D1
+    D1 --> D2
+    C1 --> E1
+    D2 --> E1
+    E1 --> E2
+    E2 --> F1
+    F1 --> G1
+```
+
 # 專案目錄與說明
 
 ```
