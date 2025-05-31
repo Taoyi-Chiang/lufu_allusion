@@ -14,14 +14,20 @@ graph TD
     E2[(all_allusion_database.csv)]
     F1[network]
 
-    %% 2. 定義接點方向
+   %% ===== 2. 定義一個「隱藏節點」作為匯集點 =====
+   subgraph Invisible
+     Z0[ ]  %% M0 用平行四邊形形狀，但內容只放半形空格，看起來「幾乎隱形」
+   end
+
+    %% 3. 定義接點方向
     A1-->|txt_to_json.py|B1
     B1-->|seg_ckip.py|B2
     B2-->|manual adjustment|C2
     A2-->|jaccard.py|C1
     A2-->|ngram.py|C2
-    C1-->|merge_allusion.py|D1
-    C2-->|merge_allusion.py|D1
+    C1-->Z0
+    C2-->Z0
+    Z0-->|merge_allusion.py|D1
     D1-->|manual supplementation|E1
     E1-->|manual feature annotation|E2
     E2-->|visualization.py|F1
