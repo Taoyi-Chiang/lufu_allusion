@@ -1,7 +1,7 @@
 # First step workflow
 
 ```mermaid
-graph TD
+graph LR
     %% 定義各個節點
     A1[(origin_text.txt)]
     A2[(compared_text.txt)]
@@ -18,7 +18,6 @@ graph TD
 
     %% 前處理階段
     subgraph Preprocessing
-    direction TB
         A1-->|txt_to_json.py|B1
         B1-->|seg_ckip.py|B2
         A2-->|clean_data.py|A3
@@ -27,7 +26,6 @@ graph TD
 
     %% 比對階段
     subgraph Allusion Matching
-    direction LR
         B2-->|manual adjustment|C2
         A3-->|jaccard.py|C1
         A3-->|ngram.py|C2
@@ -38,7 +36,6 @@ graph TD
 
     %% 標記階段
     subgraph Human-Annotated Database and Text Structuring
-    direction LR
         E1-->|manual feature annotation|E2
         E2-->|visualization.py|F1
         E2-->|jsoncsv_to_xml.py|F2
