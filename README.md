@@ -1,7 +1,7 @@
 # First step workflow
 
 ```mermaid
-graph LR
+graph TD
     %% 1. 定義各個節點
     A1[(origin_text.txt)]
     A2[(compared_text.txt)]
@@ -20,6 +20,7 @@ graph LR
     B2-->|manual adjustment|C2
     A2-->|jaccard.py|C1
     A2-->|ngram.py|C2
+    C1-->|merge_allusion.py|D1
     C2-->|merge_allusion.py|D1
     D1-->|manual supplementation|E1
     E1-->|manual feature annotation|E2
