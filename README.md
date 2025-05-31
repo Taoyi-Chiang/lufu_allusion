@@ -24,7 +24,7 @@ graph LR
     end
 
     %% 比對階段
-    subgraph Allusion Matching
+    subgraph Allusion Matching and Annotation
         B2-->|manual adjustment|C2
         A3-->|jaccard.py|C1
         A3-->|ngram.py|C2
@@ -33,8 +33,8 @@ graph LR
         D1-->|manual supplementation|E1
     end
 
-    %% 標記階段
-    subgraph Human-Annotated Database and Text Structuring
+    %% 標記與結構化階段
+    subgraph Annotated Database and Text Structuring
         E1-->|manual feature annotation|E2
         E2-->|visualization.py|F1
         E2-->|jsoncsv_to_xml.py|F2
