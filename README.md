@@ -14,18 +14,17 @@ graph LR
     E2[(all_allusion_database.csv)]
     F1[network]
 
-    G1{txt_to_json.py}
-    G2{seg_ckip.py}
-    H1{jaccard.py}
-    H2{ngram.py}
-    I1{merge_allusion.py}
-    J1[[manual adjustment]]
-    J2[[manual supplementation]]
-    J3[[manual feature annotation]]
-    K1{visualization.py}
-
     %% 2. 定義接點方向
     A1-->|txt_to_json.py|B1
+    B1-->|seg_ckip.py|B2
+    B2-->|manual adjustment|C2
+    A2-->|jaccard.py|C1
+    A2-->|ngram.py|C2
+    C2-->|merge_allusion.py|D1
+    D1-->|manual supplementation|E1
+    E1-->|manual feature annotation|E2
+    E2-->|visualization.py|F1
+    
 ```
 
 # 專案目錄與說明
