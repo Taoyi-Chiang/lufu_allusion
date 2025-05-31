@@ -1,4 +1,48 @@
 # First step workflow
+```mermaid
+flowchart TD
+    %% =========== 1. 定義各個檔案節點 ===========
+    A1[(origin_text.txt)]
+    A2[(compared_text.txt)]
+    B1[(origin_text.json)]
+    B2[(origin_text_ckip.json)]
+    C1[(sentence_allusion.json)]
+    C2[(term_allusion.json)]
+    D1[(direct_allusion.csv)]
+    E1[(basic_allusion_database.csv)]
+    E2[(all_allusion_database.csv)]
+    F1[network]
+
+    %% =========== 2. 把 merge_allusion.py 當作子圖標題，並把 C1、C2 這兩個來源放進子圖框裡 ===========
+    subgraph M1 [merge_allusion.py]
+      direction TB
+      C1
+      C2
+    end
+
+    %% =========== 3. 定義完整流程連線 ===========
+    %% 上游文字轉 JSON 與 CKIP 分詞
+    A1 --|txt_to_json.py| B1
+    B1 --|seg_ckip.py| B2
+
+    %% 比對典故階段
+    A2 --|jaccard.py| C1
+    A2 --|ngram.py| C2
+
+    %% 把 C1、C2 同時「送進」merge_allusion.py（M1 子圖框內）
+    C1 --> M1
+    C2 --> M1
+
+    %% merge_allusion.py 處理完之後，單一箭頭輸出到 direct_allusion.csv
+    M1 --> D1
+
+    %% 後續人工與視覺化步驟
+    D1 --|manual supplementation| E1
+    E1 --|manual feature annotation| E2
+    E2 --|visualization.py| F1
+
+```
+
 
 ```mermaid
 graph TD
@@ -31,7 +75,6 @@ graph TD
     D1-->|manual supplementation|E1
     E1-->|manual feature annotation|E2
     E2-->|visualization.py|F1
-    
 ```
 
 # 專案目錄與說明
