@@ -13,6 +13,7 @@ graph TD
     E1[(basic_allusion_database.csv)]
     E2[(all_allusion_database.csv)]
     F1[network]
+    F2[annotated_text.xml]
 
     %% 2. 定義接點方向
     A1-->|txt_to_json.py|B1
@@ -25,6 +26,7 @@ graph TD
     D1-->|manual supplementation|E1
     E1-->|manual feature annotation|E2
     E2-->|visualization.py|F1
+    E2-->|jsoncsv_to_xml.py|F2
 ```
 
 # 專案目錄與說明
