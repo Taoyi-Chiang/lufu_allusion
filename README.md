@@ -21,7 +21,6 @@ graph LR
         A1-->|txt_to_json.py|B1
         B1-->|seg_ckip.py|B2
         A2-->|clean_data.py|A3
-        A2-->|clean_data.py|A3
     end
 
     %% 比對階段
