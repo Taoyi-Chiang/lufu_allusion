@@ -5,6 +5,7 @@ graph TD
     %% 1. 定義各個節點
     A1[(origin_text.txt)]
     A2[(compared_text.txt)]
+    A3[(clean_compared_text.txt)]
     B1[(origin_text.json)]
     B2[(origin_text_ckip.json)]
     C1[(sentence_allusion.json)]
@@ -19,8 +20,9 @@ graph TD
     A1-->|txt_to_json.py|B1
     B1-->|seg_ckip.py|B2
     B2-->|manual adjustment|C2
-    A2-->|jaccard.py|C1
-    A2-->|ngram.py|C2
+    A2-->|clean_data.py|A3
+    A3-->|jaccard.py|C1
+    A3-->|ngram.py|C2
     C1-->|merge_allusion.py|D1
     C2-->|merge_allusion.py|D1
     D1-->|manual supplementation|E1
