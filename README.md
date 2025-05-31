@@ -3,28 +3,46 @@
 ```mermaid
 graph TD
     %% 1. 定義各個節點
-    A1[原文.txt & 比對文本.txt] 
-    A2[使用 txt_to_json.py<br/>或 Jaccard 比對]
-    B1[產生 原文.json]
-    C1[句級典故原文.json<br/>（n-gram 比對）]
-    D1[原文分詞<br/>(ckip.py)]
-    D2[詞級典故原文.json]
-    E1[直接引用 → 匯出 CSV]
-    E2[人工檢索空間引用]
-    F1[完整引用記錄 → 匯出 CSV]
-    G1[知識網路〈Knowledge Network〉]
+    A1[(origin_text.txt)]
+    A2[(compared_text.txt)]
+    B1[(origin_text.json)]
+    B2[(origin_text_ckip.json)]
+    C1[(sentence_allusion.json)]
+    C2[(term_allusion.json)]
+    D1[(direct_allusion.csv)]
+    E1[(basic_allusion_database.csv)]
+    E2[(all_allusion_database.csv)]
+    F1[network]
+    G1{txt_to_json.py}
+    G2{seg_ckip.py}
+    H1{jaccard.py}
+    H2{ngram.py}
+    I1{merge_allusion.py}
+    J1[[manual adjustment]]
+    J2[[manual supplementation]]
+    J3[[manual feature annotation]]
+    K1{visualization.py}
 
-    %% 2. 用箭頭把節點連起來
-    A1 --> A2
-    A2 --> B1
-    B1 --> C1
-    B1 --> D1
-    D1 --> D2
-    C1 --> E1
-    D2 --> E1
-    E1 --> E2
-    E2 --> F1
-    F1 --> G1
+    %% 2. 定義接點方向
+    A1-->G1
+    G1-->B1
+    B1-->G2
+    G2-->B2
+    A2-->H1
+    H1-->C1
+    B1-->C1
+    A2-->H2
+    H2-->C2
+    B2-->J1
+    J1-->C2
+    C2-->I1
+    I1-->D1
+    D1-->J2
+    J2-->E1
+    E1-->J3
+    J3-->E2
+    E2-->K1
+    K1-->F1
 ```
 
 # 專案目錄與說明
