@@ -1,6 +1,10 @@
 # First step workflow
 ```mermaid
 graph TD
+    %% ======================
+    %% 1. 定義各個子圖與節點
+    %% ======================
+
     subgraph FileInputs [來源檔案]
         A1[(origin_text.txt)]
         A2[(compared_text.txt)]
@@ -25,6 +29,10 @@ graph TD
     subgraph Visualization [視覺化]
         V1[visualization.py\n(生成網路)]
     end
+
+    %% ======================
+    %% 2. 定義各節點之間的流程連線
+    %% ======================
 
     A1 --> P1
     A2 --> M1
