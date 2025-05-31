@@ -1,4 +1,44 @@
 # First step workflow
+```mermaid
+graph TD
+    %% ===== 1. 定義各個階段與輸入/輸出 =====
+    subgraph FileInputs [來源檔案]
+        A1[(origin_text.txt)] 
+        A2[(compared_text.txt)]
+    end
+
+    subgraph Preprocessing [前處理階段]
+        P1[txt_to_json & seg_ckip<br/>(生成 JSON 資料)]
+    end
+
+    subgraph AllusionMatching [典故比對階段]
+        M1[jaccard & ngram<br/>(產生比對結果)]
+    end
+
+    subgraph Integration [典故整合階段]
+        I1[merge_allusion +<br/>人工校正/補充]
+    end
+
+    subgraph OutputDB [資料庫匯出]
+        D1[(all_allusion_database.csv)]
+    end
+
+    subgraph Visualization [視覺化]
+        V1[visualization.py<br/>(生成網路)]
+    end
+
+    %% ===== 2. 定義流程方向 =====
+    A1 --> P1
+    P1 --> M1
+    A2 --> M1
+    M1 --> I1
+    I1 --> D1
+    D1 --> V1
+
+    %% ===== 3. 附註：哪些是「人工」或「Python」 =====
+    class FileInputs,P1,M1,I1,OutputDB,Visualization stage;
+    classDef stage fill:#F0F0F0,stroke:#999,stroke-width:1px;
+```
 
 ```mermaid
 graph LR
