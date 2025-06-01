@@ -41,15 +41,15 @@ for article in main_data:
     if article.get("賦家") != target_author:
         continue
     article_num = article.get("篇號")
-    for para in article.get("段落", []):
-        if para.get("missing", False):
-            print(f"⛔ 跳過缺字段落：篇號 {article.get('篇號')}，段落編號 {para.get('段落編號')}")
-            continue
-        for group in para.get("句組", []):
-            for sentence in group.get("句子", []):
-                key = (article_num, sentence["句編號"])
-                if key in match_map:
-                    sentence["matched_refs"] = match_map[key]
+for para in article.get("段落", []):
+    if para.get("missing", False):
+        print(f"⛔ 跳過缺字段落：篇號 {article.get('篇號')}，段落編號 {para.get('段落編號')}")
+        continue
+    for group in para.get("句組", []):
+        for sentence in group.get("句子", []):
+            key = (article_num, sentence["句編號"])
+            if key in match_map:
+                sentence["matched_refs"] = match_map[key]
     filtered_data.append(article)
 
 # === 儲存整合後 JSON ===
@@ -66,24 +66,24 @@ for article in filtered_data:
     author = article["賦家"]
     title = article["賦篇"]
 
-    for para in article["段落"]:
-        para_num = para["段落編號"]
-        if para.get("missing", False):
-            print(f"⛔ 跳過缺字段落（攤平略過）：篇號 {article_num}，段落編號 {para_num}")
-            continue
-        for group in para.get("句組", []):
-            group_num = group["句組編號"]
-            for sentence in group.get("句子", []):
-                sent_num = sentence["句編號"]
-                original = sentence["原始"]
-                tokens = " ".join(sentence["tokens"])
-                matched_refs = sentence.get("matched_refs", [])
+for para in article["段落"]:
+    para_num = para["段落編號"]
+    if para.get("missing", False):
+        print(f"⛔ 跳過缺字段落（攤平略過）：篇號 {article_num}，段落編號 {para_num}")
+        continue
+    for group in para.get("句組", []):
+        group_num = group["句組編號"]
+        for sentence in group.get("句子", []):
+            sent_num = sentence["句編號"]
+            original = sentence["原始"]
+            tokens = " ".join(sentence["tokens"])
+            matched_refs = sentence.get("matched_refs", [])
 
-                if matched_refs:
-                    for ref in matched_refs:
-                        rows.append([
-                            article_num, author, title,
-                            para_num, group_num, sent_num,
+            if matched_refs:
+                for ref in matched_refs:
+                    rows.append([
+                        article_num, author, title,
+                        para_num, group_num, sent_num,
                             original, tokens,
                             ref["matched_file"],
                             ref["matched_index"],
