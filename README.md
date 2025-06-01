@@ -3,8 +3,8 @@
 ```mermaid
 graph LR
     %% 定義各個節點
-    A1[(origin_text.txt)]
-    A2[(compared_text.txt)]
+    A1["origin_text.txt"]
+    A2["compared_text.txt"]
     A3[(clean_compared_text.txt)]
     B1[(origin_text.json)]
     B2[(origin_text_ckip.json)]
