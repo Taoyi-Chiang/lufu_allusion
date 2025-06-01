@@ -1,3 +1,5 @@
+# Workflow
+```mermaid
 ---
 config:
   theme: neutral
@@ -42,3 +44,4 @@ flowchart TD
     A2@{ shape: docs}
     C2@{ shape: doc}
     C1@{ shape: doc}
+```
