@@ -2,7 +2,7 @@
 ```mermaid
 ---
 config:
-  theme: neutral
+  theme: dark
   look: neo
 ---
 flowchart TD
