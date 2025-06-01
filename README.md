@@ -1,7 +1,7 @@
 # First step workflow
 
 ```mermaid
-graph LR
+graph TD
     %% 定義各個節點
     A1["origin_text.txt"]
     A2["compared_text.txt"]
