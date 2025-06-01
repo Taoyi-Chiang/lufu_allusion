@@ -5,11 +5,11 @@ graph LR
     %% 定義各個節點
     A1["origin_text.txt"]
     A2["compared_text.txt"]
-    A3[(clean_compared_text.txt)]
-    B1[(origin_text.json)]
-    B2[(origin_text_ckip.json)]
-    C1[(sentence_allusion.json)]
-    C2[(term_allusion.json)]
+    A3["clean_compared_text.txt"]
+    B1["origin_text.json"]
+    B2["origin_text_ckip.json"]
+    C1["sentence_allusion.json"]
+    C2["term_allusion.json"]
     D1[(direct_allusion.csv)]
     E1[(basic_allusion_database.csv)]
     E2[(all_allusion_database.csv)]
@@ -39,6 +39,15 @@ graph LR
         E2-->|visualization.py|F1
         E2-->|jsoncsv_to_xml.py|F2
     end
+
+    %% 定義形狀
+    A1@{ shape: docs}
+    A2@{ shape: docs}
+    A3@{ shape: docs}
+    B1@{ shape: doc}
+    B2@{ shape: doc}
+    C1@{ shape: doc}
+    C2@{ shape: doc}
 ```
 
 # 專案目錄與說明
