@@ -28,7 +28,7 @@ flowchart TD
     B1 -- "seg_ckip.py" --> B2
     A2 -- "clean_data.py" --> A3
     B2 -- "manual adjustment & ngram.py"--> C2
-    B2 -- "jaccard.py" --> C1
+    B1 -- "jaccard.py" --> C1
     A3 -- "jaccard.py" --> C1
     A3 -- "ngram.py" --> C2
     C1 -- "merge_allusion.py" --> D1
