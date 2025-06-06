@@ -31,7 +31,7 @@ flowchart TD
     B1 -- "jaccard.py" --> C1
     A3 -- "jaccard.py" --> C1
     A3 -- "ngram.py" --> C2
-    C1 -- "merge_allusion.py" --> D1
+    C1 -- "ngram.py" --> C2
     C2 -- "merge_allusion.py" --> D1
     D1 -- manual supplementation --> E1
     E1 -- manual feature annotation --> E2
