@@ -29,6 +29,7 @@ flowchart TD
 
   A1 -- "txt_to_json.py" --> B1
   A2 -- "clean_data.py" --> A3
+  B2 -- "jaccard.py" --> C1
   A3 -- "jaccard.py" --> C1
   A3 -- "ngram.py" --> C2
   B1 -- "seg_ckip.py" --> B2
