@@ -17,10 +17,10 @@ flowchart TD
         C2["term_allusion.json"]
         C1["sentence_allusion.json"]
         D1[("direct_allusion.csv")]
-        E1[("basic_allusion_database.csv")]
+        E1[("integrated_allusion_database.csv")]
   end
  subgraph subGraph2["Annotated Database and Text Structuring"]
-        E2[("all_allusion_database.csv")]
+        E2[("annotated_allusion_database.csv")]
         F1["network"]
         F2["annotated_text.xml"]
   end
