@@ -20,7 +20,6 @@ flowchart TD
       E1[("integrated_allusion_database.csv")]
   end
   subgraph subGraph2["Annotated Database and Text Structuring"]
-      DB[/"Create SQL Server DB\n(產生 .mdf 檔)"/]
       E2[("annotated_allusion_database.mdf")]
       F1["network"]
       F2["annotated_text.xml"]
@@ -33,9 +32,8 @@ flowchart TD
     B2 -- "jaccard.py" --> C1
     B2 -- "manual adjustment & ngram.py" --> C2
     C2 -- "merge_allusion.py" --> D1
-    D1 -- "manual supplementation" --> E1
-    E1 -- "csv_to_mdf.py" --> DB
-    DB -- "imported data" --> E2
+    D1 -- "manual supplementation --> E1
+    E1 -- "csv_to_mdf.py" --> E2
     E2 -- "visualization.py" --> F1
     E2 -- "jsoncsv_to_xml.py" --> F2
     C1 -- "merge_allusion.py" --> D1
