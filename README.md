@@ -30,13 +30,13 @@ flowchart TD
     A3 -- "ngram.py" --> C2
     B1 -- "seg_ckip.py" --> B2
     B2 -- "jaccard.py" --> C1
+    C1 -- "merge_allusion.py" --> D1
     B2 -- "manual adjustment & ngram.py" --> C2
     C2 -- "merge_allusion.py" --> D1
     D1 -- "manual supplementation --> E1
-    E1 -- "csv_to_mdf.py" --> E2
+    E1 -- "Import_SQL.py" --> E2
     E2 -- "visualization.py" --> F1
     E2 -- "jsoncsv_to_xml.py" --> F2
-    C1 -- "merge_allusion.py" --> D1
 
     %% 文件icon
     A1@{ shape: docs}
